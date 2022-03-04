@@ -8,32 +8,34 @@ function App() {
 
   const [value, setValue] = useState(0);
 
-  const { id, name, price, img, released, desc } = phone[value];
+  const { id, name, price, img, specs, desc } = phone[value];
 
   return (
-    <main>
-      <h3>phone shop</h3>
-
-      {phone.map((item, index) => {
-        return (
-          <button
-            key={index}
-            onClick={() => {
-              setValue(index);
-            }}
-          >
-            {item.name}
-          </button>
-        );
-      })}
+    <main className="container">
+      <h3>phone village</h3>
+      <div className="flex">
+        {phone.map((item, index) => {
+          return (
+            <button
+              className="btn"
+              key={index}
+              onClick={() => {
+                setValue(index);
+              }}
+            >
+              {item.name}
+            </button>
+          );
+        })}
+      </div>
       <section>
-        <div>{name}</div>
-        <div>{price}</div>
-        <div>{released}</div>
-
         <div>
           <img src={img} alt={name} />
         </div>
+        <div className="name">{name}</div>
+        <div className="price">{price}</div>
+        <div className="specs">{specs}</div>
+
         <p>{desc}</p>
       </section>
     </main>
