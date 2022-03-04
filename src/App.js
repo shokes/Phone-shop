@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "./index.css";
+import phones from "./data";
 
 function App() {
+  const [phone, setPhone] = useState(phones);
+
+  const [value, setValue] = useState(0);
+
+  const { id, name, price, img, released, desc } = phone[value];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h3>phone shop</h3>
+
+      {phone.map((item, index) => {
+        return (
+          <button
+            key={index}
+            onClick={() => {
+              setValue(index);
+            }}
+          >
+            {item.name}
+          </button>
+        );
+      })}
+      <section>
+        <div>{name}</div>
+        <div>{price}</div>
+        <div>{released}</div>
+
+        <div>
+          <img src={img} alt={name} />
+        </div>
+        <p>{desc}</p>
+      </section>
+    </main>
   );
 }
 
